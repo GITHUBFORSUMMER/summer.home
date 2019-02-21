@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="summer-home-commom" />
+        <module name="summer-home-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="summer-home-commom" target="1.8" />
+      <module name="summer-home-web" target="1.8" />
+      <module name="summer.home" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

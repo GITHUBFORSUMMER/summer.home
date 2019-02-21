@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/summer-home-commom/summer-home-commom.iml" filepath="$PROJECT_DIR$/summer-home-commom/summer-home-commom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer-home-web/summer-home-web.iml" filepath="$PROJECT_DIR$/summer-home-web/summer-home-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer.home.iml" filepath="$PROJECT_DIR$/summer.home.iml" />
+    </modules>
+  </component>
+</project>
