@@ -7,13 +7,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="summer-home-commom" />
+        <module name="summer-home-dao" />
+        <module name="summer-home-entity" />
+        <module name="summer-home-model" />
+        <module name="summer-home-service" />
         <module name="summer-home-web" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
+    <bytecodeTargetLevel>
+      <module name="summer-home" target="1.8" />
       <module name="summer-home-commom" target="1.8" />
+      <module name="summer-home-dao" target="1.8" />
+      <module name="summer-home-entity" target="1.8" />
+      <module name="summer-home-model" target="1.8" />
+      <module name="summer-home-service" target="1.8" />
       <module name="summer-home-web" target="1.8" />
-      <module name="summer.home" target="1.8" />
+      <module name="summerhomeservice" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

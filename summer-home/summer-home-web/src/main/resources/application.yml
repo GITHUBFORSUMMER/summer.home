@@ -1,0 +1,31 @@
+spring:
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///summer?serverTimezone=UTC&useSSL=false
+    username: root
+    password: 123456
+
+  mvc:
+    favicon:
+      enabled: true
+
+server:
+  port: 443
+  ssl:
+    key-store: classpath:1845442_www.huangyingsheng.com.jks
+    key-password: wS6EDAQv
+    key-store-type: jks
+
+
+
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  type-aliases-package: com.huangyingsheng.web.entity

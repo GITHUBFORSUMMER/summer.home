@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/summer-home-commom/summer-home-commom.iml" filepath="$PROJECT_DIR$/summer-home-commom/summer-home-commom.iml" />
-      <module fileurl="file://$PROJECT_DIR$/summer-home-web/summer-home-web.iml" filepath="$PROJECT_DIR$/summer-home-web/summer-home-web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/summer.home.iml" filepath="$PROJECT_DIR$/summer.home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer-home/summer-home.iml" filepath="$PROJECT_DIR$/summer-home/summer-home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer-home/summer-home-commom/summer-home-commom.iml" filepath="$PROJECT_DIR$/summer-home/summer-home-commom/summer-home-commom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer-home/summer-home-dao/summer-home-dao.iml" filepath="$PROJECT_DIR$/summer-home/summer-home-dao/summer-home-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer-home/summer-home-entity/summer-home-entity.iml" filepath="$PROJECT_DIR$/summer-home/summer-home-entity/summer-home-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer-home/summer-home-model/summer-home-model.iml" filepath="$PROJECT_DIR$/summer-home/summer-home-model/summer-home-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer-home/summer-home-service/summer-home-service.iml" filepath="$PROJECT_DIR$/summer-home/summer-home-service/summer-home-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/summer-home/summer-home-web/summer-home-web.iml" filepath="$PROJECT_DIR$/summer-home/summer-home-web/summer-home-web.iml" />
     </modules>
   </component>
 </project>
