@@ -34,10 +34,4 @@ public class HomeController {
         return "summer";
     }
 
-    @GetMapping("/get")
-    @ResponseBody
-    public String get() {
-        return "123";
-    }
-
 }
