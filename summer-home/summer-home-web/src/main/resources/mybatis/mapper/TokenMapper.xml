@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.huangyingsheng.web.dao.TokenMapper">
+    <resultMap id="BaseResultMap" type="com.huangyingsheng.web.entity.AccessToken">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="access_token" property="accessToken" jdbcType="VARCHAR"/>
+        <result column="ticket" property="ticket" jdbcType="VARCHAR"/>
+        <result column="expires_in" property="expiresIn" jdbcType="INTEGER"/>
+        <result column="effective" property="effective" jdbcType="INTEGER"/>
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_by" property="modifyBy" jdbcType="VARCHAR"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="display" property="display" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <select id="getTokenByAppId" parameterType="java.lang.String" resultMap="BaseResultMap">
+
+SELECT id,app_id,access_token,ticket,expires_in,effective,create_by,create_time,modify_by,modify_time,display from tb_wechat_access_token
+WHERE display=1 AND effective=1 AND app_id= #{appId,jdbcType=VARCHAR}
+
+     </select>
+
+</mapper>

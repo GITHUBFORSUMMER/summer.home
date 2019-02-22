@@ -7,7 +7,6 @@
     <link rel="icon" type="shortcut icon" href="/summer.ico">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="/css/docs.css">
-    <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 </head>
 <body>
 
@@ -57,7 +56,7 @@
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/dotline.js"></script>
     <script type="text/javascript" src="/js/webcolor.js"></script>
-
+    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 
     <script th:inline="javascript">
         //调用
@@ -90,21 +89,26 @@
 
         var wxData = [[${wxjsconfig}]];
 
+    </script>
+
+    <script>
         wx.config({
             debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
             appId: 'wx80a7631fb6f3e4d2', // 必填，公众号的唯一标识
             timestamp: wxData.timestamp, // 必填，生成签名的时间戳
             nonceStr: wxData.nonceStr, // 必填，生成签名的随机串
             signature: wxData.signature,// 必填，签名，见附录1
-            jsApiList: ["onMenuShareTimeline", "onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+            jsApiList: ["updateTimelineShareData", "updateAppMessageShareData"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         });
 
+
+
         wx.ready(function () {
-            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-            wx.onMenuShareTimeline({
+
+            wx.updateTimelineShareData({
                 title: 'HELLO SUMMER', // 分享标题
                 link: 'www.huangyingsheng.com', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0', // 分享图标
+                imgUrl: "https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP659qUMbs9W8knGraEmOcPyxI8XtbDo8c1sePmjGI4ohz55wE54ghRC3nV11scPotdDyM0lGhlS4Q/0?wx_fmt=jpeg", // 分享图标
                 success: function () {
                     // 用户确认分享后执行的回调函数
                     alert("很棒，你分享操作的姿势总是那么的优雅!");
@@ -113,33 +117,57 @@
                     // 用户取消分享后执行的回调函数
                     alert("分享一个又不影响成绩");
                 }
-            });
-            wx.onMenuShareAppMessage({
+            })
+
+
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+           /* wx.onMenuShareTimeline({
+                title: "HELLO SUMMER", // 分享标题
+                link: "www.huangyingsheng.com", // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: "https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP659qUMbs9W8knGraEmOcPyxI8XtbDo8c1sePmjGI4ohz55wE54ghRC3nV11scPotdDyM0lGhlS4Q/0?wx_fmt=jpeg", // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    alert("很棒，你分享操作的姿势总是那么的优雅!");
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                    alert("分享一个又不影响成绩");
+                }
+            });*/
+
+            wx.updateAppMessageShareData({
                 title: 'HELLO SUMMER', // 分享标题
                 desc: '药！！DJ Drop the beat!', // 分享描述
                 link: 'www.huangyingsheng.com', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0', // 分享图标
+                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
+                success: function () {
+                    // 设置成功
+                }
+            })
+
+            /*wx.onMenuShareAppMessage({
+                title: 'HELLO SUMMER', // 分享标题
+                desc: '药！！DJ Drop the beat!', // 分享描述
+                link: 'www.huangyingsheng.com', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
                 type: 'link', // 分享类型,music、video或link，不填默认为link
                 //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                 success: function () {
                     // 用户确认分享后执行的回调函数
-                    alert(1);
                 },
                 cancel: function () {
                     // 用户取消分享后执行的回调函数
-                    alert(0);
                 }
-            });
+            });*/
         });
 
         wx.error(function (res) {
             // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-            alert("今天不能微信分享了哦");
+            alert("今天不能微信分享了哦" + "[" + res.errMsg + "]");
             //alert(res);
         });
-
-
     </script>
+
 
 </div>
 </body>
