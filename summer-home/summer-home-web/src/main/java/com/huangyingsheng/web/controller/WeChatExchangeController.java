@@ -1,6 +1,9 @@
 package com.huangyingsheng.web.controller;
 
 import com.huangyingsheng.web.commom.encryption.SHA1Encryption;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +30,8 @@ public class WeChatExchangeController {
 
     @RequestMapping(value = "/processMessage", method = {RequestMethod.GET, RequestMethod.POST})
     public String processMessage() {
+
+        String reponseXML = "";
 
         String signature = httpServletRequest.getParameter("signature");
         String timestamp = httpServletRequest.getParameter("timestamp");
@@ -55,15 +60,50 @@ public class WeChatExchangeController {
         }
 
         try {
-            String body = getBody(httpServletRequest);
-            System.out.println(body);
-        } catch (IOException e) {
+            String xmlBody = getBody(httpServletRequest);
+            System.out.println(xmlBody);
+
+            Document dom = DocumentHelper.parseText(xmlBody);
+            Element root = dom.getRootElement();
+            String toUserName = root.element("ToUserName").getText();
+            String fromUserName = root.element("FromUserName").getText();
+            String createTime = root.element("CreateTime").getText();
+            String msgType = root.element("MsgType").getText();
+            String event = "";
+            if (root.element("Event") != null) {
+                event = root.element("Event").getText();
+            }
+            String eventKey = "";
+            if (root.element("EventKey") != null) {
+                eventKey = root.element("EventKey").getText();
+            }
+
+            switch (msgType) {
+                case "text":
+                    reponseXML = createReplyTextMsgXml(fromUserName, toUserName, "SUMMER正在忙其他的事情，晚点再回复你了哦！(^v^)!");
+                    break;
+                default:
+                    reponseXML = createReplyTextMsgXml(fromUserName, toUserName, "SUMMER正在忙其他的事情，晚点再回复你了哦！(^v^)!");
+                    break;
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return "";
+        return reponseXML;
     }
 
+    private String createReplyTextMsgXml(String toUser, String fromUser, String msg) {
+        String xml = "<xml>" +
+                "<ToUserName><![CDATA[{ToUser}]]></ToUserName>" +
+                "<FromUserName><![CDATA[{FromUser}]]></FromUserName>" +
+                "<CreateTime>{Time}</CreateTime>" +
+                "<MsgType><![CDATA[text]]></MsgType>" +
+                "<Content><![CDATA[{Content}]]></Content>" +
+                "</xml>";
+        return xml.replace("{ToUser}", toUser).replace("{FromUser}", fromUser).replace("{Time}", Long.toString(System.currentTimeMillis())).replace("{Content}", msg);
+    }
 
     private String getBody(HttpServletRequest request) throws IOException {
         InputStream in = request.getInputStream();
