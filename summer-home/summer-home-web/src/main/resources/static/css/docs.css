@@ -23,7 +23,7 @@ html, body {
     line-height: 50px;
     font-size: 22px;
     border-radius: 50%;
-    margin: 0 25px;
+    /*margin: 0 25px;*/
     color: snow;
 }
 
@@ -32,16 +32,15 @@ html, body {
 }
 
 
-
 .m-face {
     display: none;
     animation: float ease-in-out 3s infinite;
 }
 
-    .m-content p, .m-face p, .m-vb-face p {
-        font-family: 'Microsoft YaHei UI';
-        font-size: 20px;
-    }
+.m-content p, .m-face p, .m-vb-face p {
+    font-family: 'Microsoft YaHei UI';
+    font-size: 20px;
+}
 
 .m-vb-face p {
     padding: 0;
@@ -75,7 +74,7 @@ html, body {
     margin-top: 30px;
 }
 
-@media(max-width:600px) {
+@media (max-width: 600px) {
     .my-nick h1 {
         font-size: 50px;
     }
@@ -99,7 +98,7 @@ html, body {
         height: 460px;
         width: 100%;
         background-color: #111;
-        position: relative !important;
+        /*position: relative !important;*/
         bottom: 0;
         color: #fffafa;
     }
@@ -111,7 +110,8 @@ html, body {
         background-color: white;
         margin-bottom: 0px !important;
         position: relative;
-        z-index: 2;
+        background-position-x: -500px !important;
+        background-repeat: no-repeat !important;
     }
 
     .tiptext {
@@ -120,6 +120,13 @@ html, body {
 
     .mapbody {
         margin-top: 30%;
+    }
+
+    .foot-auxiliary {
+        display: block !important;;
+        height: 460px;
+        width: 100%;
+        position: relative;
     }
 }
 
@@ -133,44 +140,46 @@ html, body {
     padding: 50px;
 }
 
-    .m-image:hover {
-        width: 300px;
-        height: 300px;
-        padding: 0;
-    }
+.m-image:hover {
+    width: 300px;
+    height: 300px;
+    padding: 0;
+}
 
 
 .m-static-top {
     height: 100%;
     width: 100%;
-    background-color: rgb(30,30,30);
+    background-color: rgb(30, 30, 30);
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
-    .m-static-top h1 {
-        font-family: Arial;
-        font-size: 150px;
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        height: 190px;
-        margin-top: -95px;
-        display: block;
-        width: 190px;
-        left: 50%;
-        margin-left: -95px;
-        color: white;
-    }
+.m-static-top h1 {
+    font-family: Arial;
+    font-size: 150px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    height: 190px;
+    margin-top: -95px;
+    display: block;
+    width: 190px;
+    left: 50%;
+    margin-left: -95px;
+    color: white;
+}
 
 
 .m-static-body {
+    background: url("/image/mypic.jpg");
     height: 100%;
     width: 100%;
     background-color: white;
     margin-bottom: 460px;
     position: relative;
-    z-index: 2;
+    z-index: 3;
+    background-size: cover;
 }
 
 .m-static-foot {
@@ -180,8 +189,12 @@ html, body {
     position: fixed;
     bottom: 0;
     color: snow;
+    z-index: 2;
 }
 
+.foot-auxiliary {
+    display: none;
+}
 
 .fontshow {
     color: #888888;
@@ -191,6 +204,6 @@ html, body {
     margin-top: 10%;
 }
 
-    .mapbody > .mapimg {
-        margin-left: 39%;
-    }
+.mapbody > .mapimg {
+    margin-left: 39%;
+}

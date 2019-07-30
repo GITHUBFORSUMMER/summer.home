@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.huangyingsheng.web.dao.BlogsMapper">
+    <resultMap id="BaseResultMap" type="com.huangyingsheng.web.entity.BlogsDO">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="show_text" property="showText" jdbcType="VARCHAR"/>
+        <result column="tags" property="tags" jdbcType="VARCHAR"/>
+        <result column="reading_volume" property="readingVolume" jdbcType="INTEGER"/>
+        <result column="like_no" property="likeNo" jdbcType="VARCHAR"/>
+        <result column="content_url" property="contentUrl" jdbcType="VARCHAR"/>
+
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_by" property="modifyBy" jdbcType="VARCHAR"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="display" property="display" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+  id, code, title, show_text, tags, reading_volume, like_no, content_url, create_by, create_time, modify_by, modify_time, remark, display
+  </sql>
+
+
+    <select id="getBlogList" parameterType="com.huangyingsheng.web.input.GetBlogListInput" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from tb_blogs
+        WHERE display=1
+        <if test="title!=null and !&quot;&quot;.equals(title.trim())">
+            <bind name="titleLike" value=" '%' + title + '%' "></bind>
+            and title like #{titleLike,jdbcType=VARCHAR}
+        </if>
+
+        <if test="showText!=null and !&quot;&quot;.equals(showText.trim())">
+            <bind name="showTextLike" value=" '%' + showText + '%' "></bind>
+            and show_text like #{showTextLike,jdbcType=VARCHAR}
+        </if>
+
+        <if test="tags!=null and !&quot;&quot;.equals(tags.trim())">
+            <bind name="tagsLike" value=" '%' + tags + '%' "></bind>
+            and tags like #{tagsLike,jdbcType=VARCHAR}
+        </if>
+        ORDER BY create_time DESC
+        Limit #{pageFrom,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+
+    <select id="getByCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from tb_blogs
+        WHERE display=1
+        AND code=#{code,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width"/>
     <title>SUMMER</title>
     <link rel="icon" type="shortcut icon" href="/summer.ico">
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="/css/docs.css">
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css?v=201901">
+    <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201902">
+    <link type="text/css" rel="stylesheet" href="/css/font-awesome.min.css?v=201901">
+    <style>
+
+        a:hover {
+            color: grey;
+        }
+    </style>
 </head>
 <body>
 
 <canvas id="summerdotline" style="position:absolute;top:0;left:0;z-index:99"></canvas>
+
 <div class="m-static-top">
     <h1 class="font_color"> Hi.</h1>
 </div>
@@ -20,13 +28,24 @@
             <div class="row mapbody">
                 <div class="col-xs-6 col-md-3 mapimg">
                     <a href="javascript:void(0)" class="thumbnail">
-                        <img src="/image/logo_2019.jpg"/>
+                        <!--  <img src="/image/logo_2019.jpg"/>-->
                     </a>
                 </div>
             </div>
         </div>
         <div class="col-sm-12 text-center tiptext">
-            <h1 class="fontshow fontactive">During construction, we will be back soon</h1>
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-2">
+                <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+            </div>
+            <div class="col-sm-2">
+                <a href="/blog">
+                    <h1 class="fontshow fontactive">Blog</h1>
+                </a>
+            </div>
+            <div class="col-sm-4">
+            </div>
         </div>
     </div>
 </div>
@@ -39,17 +58,29 @@
             </div>
         </div>
 
-        <div class="col-sm-12">
-            <div class="col-sm-6 m-cw">
-                <a class="m-cw-icon"><span class="glyphicon glyphicon-earphone"></span></a>
-                <strong> Mobile:173-1771-0886</strong>
-            </div>
-            <div class="col-sm-6 m-cw">
-                <a class="m-cw-icon"><span class="glyphicon glyphicon-envelope"></span></a>
-                <strong> Mail:170898192@QQ.com</strong>
-            </div>
-        </div>
 
+        <div class="col-sm-12">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="col-xs-3">
+                    <a href="mailto:youemail@mail.com?subject=邮件标题&body=邮件内容">
+                        <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col-xs-3">
+                    <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="col-xs-3">
+                    <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="col-xs-3">
+                    <a href="https://github.com/GITHUBFORSUMMER">
+                        <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
     </div>
 
 
@@ -59,32 +90,6 @@
     <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 
     <script th:inline="javascript">
-        //调用
-        //window.onload = function () {
-        //    var dotline = new Dotline({
-        //        dom: 'summerdotline',//画布id
-        //        cw: document.body.clientWidth,//画布宽
-        //        ch: $(document).height(),//画布高
-        //        ds: 50,//点的个数
-        //        r: 0.5,//圆点半径
-        //        dis: 80//触发连线的距离
-        //    }).start();
-        //}
-
-
-        setInterval(function () {
-            $(".fontshow").fadeOut(200, function () {
-                if ($(".fontshow").hasClass("fontactive")) {
-                    $(".fontshow").html("站点建设中 我们很快就会回来");
-                    $(".fontshow").removeClass("fontactive");
-                } else {
-                    $(".fontshow").html("During construction, We will be back soon");
-                    $(".fontshow").addClass("fontactive");
-                }
-                $(".fontshow").fadeIn(2000);
-            });
-        }, 5000);
-
 
         var wxData = [[${wxjsconfig}]];
 
@@ -103,38 +108,10 @@
 
         wx.ready(function () {
 
-           /* wx.updateTimelineShareData({
-                title: 'HELLO SUMMER', // 分享标题
-                link: 'https://www.huangyingsheng.com/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP659qUMbs9W8knGraEmOcPyxI8XtbDo8c1sePmjGI4ohz55wE54ghRC3nV11scPotdDyM0lGhlS4Q/0?wx_fmt=jpeg', // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    alert('很棒，你分享操作的姿势总是那么的优雅!');
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                    alert('分享一个又不影响成绩');
-                }
-            });
-
-            wx.updateAppMessageShareData({
-                title: 'HELLO SUMMER', // 分享标题
-                desc: '药！！DJ Drop the beat!', // 分享描述
-                link: 'https://www.huangyingsheng.com/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
-                success: function () {
-                    // 设置成功
-                }
-            });
-            */
-
-
-
-            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-             wx.onMenuShareTimeline({
+            /* wx.updateTimelineShareData({
                  title: 'HELLO SUMMER', // 分享标题
                  link: 'https://www.huangyingsheng.com/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                 imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
+                 imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP659qUMbs9W8knGraEmOcPyxI8XtbDo8c1sePmjGI4ohz55wE54ghRC3nV11scPotdDyM0lGhlS4Q/0?wx_fmt=jpeg', // 分享图标
                  success: function () {
                      // 用户确认分享后执行的回调函数
                      alert('很棒，你分享操作的姿势总是那么的优雅!');
@@ -144,6 +121,33 @@
                      alert('分享一个又不影响成绩');
                  }
              });
+
+             wx.updateAppMessageShareData({
+                 title: 'HELLO SUMMER', // 分享标题
+                 desc: '药！！DJ Drop the beat!', // 分享描述
+                 link: 'https://www.huangyingsheng.com/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                 imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
+                 success: function () {
+                     // 设置成功
+                 }
+             });
+             */
+
+
+            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+            wx.onMenuShareTimeline({
+                title: 'HELLO SUMMER', // 分享标题
+                link: 'https://www.huangyingsheng.com/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    alert('很棒，你分享操作的姿势总是那么的优雅!');
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                    alert('分享一个又不影响成绩');
+                }
+            });
 
 
             wx.onMenuShareAppMessage({
@@ -171,5 +175,6 @@
 
 
 </div>
+<div class="foot-auxiliary"></div>
 </body>
 </html>

@@ -4,7 +4,7 @@ import com.huangyingsheng.web.commom.encryption.SHA1Encryption;
 import com.huangyingsheng.web.commom.map.SortMap;
 import com.huangyingsheng.web.dao.TokenMapper;
 import com.huangyingsheng.web.entity.AccessToken;
-import com.huangyingsheng.web.model.vo.TokenVo;
+import com.huangyingsheng.web.model.response.TokenVo;
 import com.huangyingsheng.web.service.TokenService;
 import org.springframework.stereotype.Service;
 

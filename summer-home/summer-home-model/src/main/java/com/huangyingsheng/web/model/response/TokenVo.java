@@ -1,4 +1,4 @@
-package com.huangyingsheng.web.model.vo;
+package com.huangyingsheng.web.model.response;
 
 public class TokenVo {
 

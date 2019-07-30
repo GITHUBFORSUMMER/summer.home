@@ -8,7 +8,7 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql:///summer?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://47.101.143.140/summer?serverTimezone=UTC&useSSL=false
     username: root
     password: 123456
 
@@ -16,12 +16,12 @@ spring:
     favicon:
       enabled: true
 
-server:
-  port: 443
-  ssl:
-    key-store: classpath:1845442_www.huangyingsheng.com.jks
-    key-password: wS6EDAQv
-    key-store-type: jks
+#server:
+#  port: 443
+#  ssl:
+#    key-store: classpath:1845442_www.huangyingsheng.com.jks
+#    key-password: wS6EDAQv
+#    key-store-type: jks
 
 
 

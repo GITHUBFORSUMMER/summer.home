@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>VIEW_BLOG</title>
+
+    <link type="text/css" rel="stylesheet" href="/css/editormd.css">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/md/marked.min.js"></script>
+    <script type="text/javascript" src="/js/md/prettify.min.js"></script>
+    <script type="text/javascript" src="/js/md/raphael.min.js"></script>
+    <script type="text/javascript" src="/js/md/underscore.min.js"></script>
+    <script type="text/javascript" src="/js/md/sequence-diagram.min.js"></script>
+    <script type="text/javascript" src="/js/md/flowchart.min.js"></script>
+    <script type="text/javascript" src="/js/md/jquery.flowchart.min.js"></script>
+    <script type="text/javascript" src="/js/md/editormd.js"></script>
+
+    <script th:inline="javascript">
+        var blog_code = [[${blog_code}]];
+        $(function () {
+            var data = {
+                "code": blog_code
+            };
+            $.ajax({
+                type: "post",
+                url: "/blog/get_blog_md_url",
+                contentType: "application/json;charset=UTF-8",
+                data: JSON.stringify(data),
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    if (result == null) {
+                        return;
+                    }
+                    if (!result.success) {
+                        alert(result.message);
+                    }
+                    if (result.data == null) {
+                        return;
+                    }
+                    mdInit(result.data);
+                }
+            });
+
+
+        })
+
+
+        function mdInit(url) {
+            $.get(url, function (obj, status) {
+                $("#md_text").html(obj);
+                var wordsView = editormd.markdownToHTML("wordsView", {
+                    htmlDecode: "style,script,iframe",  // you can filter tags decode
+                    emoji: true,
+                    taskList: true,
+                    tex: true,  // 默认不解析
+                    flowChart: true,  // 默认不解析
+                    sequenceDiagram: true,  // 默认不解析
+                });
+            });
+
+        }
+
+    </script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse  navbar-static-top">
+    <div class="container-fluid">
+        <div class="col-sm-3"></div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="col-sm-6">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">SUMMER</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/blog">Blog<span class="sr-only"></span></a></li>
+                    <li><a href="#">Life</a></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">搜索</button>
+                </form>
+
+                <!--最右边-->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</nav>
+
+<div class="col-md-12">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+
+        <div id="wordsView">
+            <textarea id="md_text" name="editormd-markdown-doc"></textarea>
+        </div>
+
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+
+</body>
+</html>
