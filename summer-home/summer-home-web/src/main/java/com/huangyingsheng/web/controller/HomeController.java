@@ -1,6 +1,10 @@
 package com.huangyingsheng.web.controller;
 
+import com.huangyingsheng.web.entity.BlogsDO;
+import com.huangyingsheng.web.model.request.GetBlogMDUrlRequestVO;
+import com.huangyingsheng.web.model.response.BaseResponse;
 import com.huangyingsheng.web.model.response.TokenVo;
+import com.huangyingsheng.web.service.BlogService;
 import com.huangyingsheng.web.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,9 @@ public class HomeController {
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private BlogService blogService;
 
     @Autowired
     private HttpServletRequest httpServletRequest;
@@ -36,8 +43,13 @@ public class HomeController {
 
     @RequestMapping(value = "/view/{code}", method = RequestMethod.GET)
     public String viewBlog(Model model, @PathVariable(value = "code") String code) {
+        GetBlogMDUrlRequestVO dto = new GetBlogMDUrlRequestVO();
+        dto.setCode(code);
+        BaseResponse<BlogsDO> blogMDUrl = blogService.getBlogMDUrl(dto);
         model.addAttribute("wxjsconfig", getToken());
         model.addAttribute("blog_code", code);
+        model.addAttribute("md_url", blogMDUrl.getData().getContentUrl());
+        model.addAttribute("blog_title", blogMDUrl.getData().getTitle());
         return "view";
     }
 
@@ -47,6 +59,11 @@ public class HomeController {
         return "about";
     }
 
+    @RequestMapping(value = "/mylife", method = RequestMethod.GET)
+    public String myLife(Model model) {
+        model.addAttribute("wxjsconfig", getToken());
+        return "mylife";
+    }
 
     private TokenVo getToken() {
         String requestURL = httpServletRequest.getRequestURL().toString();

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,21 +54,21 @@ public class BlogServiceImpl implements BlogService {
             blog.setReadingVolume(blogsDO.getReadingVolume());
             blog.setLikeNo(blogsDO.getLikeNo());
             blog.setContentUrl(blogsDO.getContentUrl());
-            blog.setCreateTime(blogsDO.getCreateTime());
+            blog.setCreateTime(new SimpleDateFormat("yyyy-MM-dd").format(blogsDO.getCreateTime()));
             blogs.add(blog);
         }
         return BaseResponse.ofSuccess(blogs);
     }
 
     @Override
-    public BaseResponse<String> getBlogMDUrl(GetBlogMDUrlRequestVO request) {
+    public BaseResponse<BlogsDO> getBlogMDUrl(GetBlogMDUrlRequestVO request) {
         if (request == null || StringUtils.isEmpty(request.getCode())) {
             return BaseResponse.ofParamError("参数异常");
         }
 
         BlogsDO byCode = blogsMapper.getByCode(request.getCode());
 
-        return BaseResponse.ofSuccess(byCode.getContentUrl());
+        return BaseResponse.ofSuccess(byCode);
     }
 
 

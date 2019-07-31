@@ -26,7 +26,7 @@ public class BlogsResponseVO {
     private String contentUrl;
 
     @JsonProperty("create_time")
-    private Date createTime;
+    private String createTime;
 
 
     public String getCode() {
@@ -85,11 +85,11 @@ public class BlogsResponseVO {
         this.contentUrl = contentUrl;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 }

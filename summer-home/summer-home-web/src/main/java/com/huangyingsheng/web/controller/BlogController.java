@@ -28,10 +28,4 @@ public class BlogController {
     }
 
 
-    @PostMapping("/get_blog_md_url")
-    public BaseResponse<String> getBlogMDUrl(@RequestBody GetBlogMDUrlRequestVO request) {
-        return blogService.getBlogMDUrl(request);
-    }
-
-
 }

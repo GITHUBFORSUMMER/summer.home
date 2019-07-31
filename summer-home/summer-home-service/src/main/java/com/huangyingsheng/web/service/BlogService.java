@@ -1,5 +1,6 @@
 package com.huangyingsheng.web.service;
 
+import com.huangyingsheng.web.entity.BlogsDO;
 import com.huangyingsheng.web.model.request.BlogsRequestVO;
 import com.huangyingsheng.web.model.request.GetBlogMDUrlRequestVO;
 import com.huangyingsheng.web.model.response.BaseResponse;
@@ -13,6 +14,7 @@ public interface BlogService {
 
     BaseResponse<List<BlogsResponseVO>> getBlogs(BlogsRequestVO request);
 
-    BaseResponse<String> getBlogMDUrl(GetBlogMDUrlRequestVO request);
+    BaseResponse<BlogsDO> getBlogMDUrl(GetBlogMDUrlRequestVO request);
+
 
 }

@@ -3,13 +3,30 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>SUMMER-About</title>
+    <title>MyLife</title>
     <link type="text/css" rel="stylesheet" href="/css/editormd.css">
     <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201902">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.css?v=201901">
 
     <script type="text/javascript" src="/js/md/jquery.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+    <script th:inline="javascript">
+        setInterval(function () {
+            $(".fontshow").fadeOut(200, function () {
+                if ($(".fontshow").hasClass("fontactive")) {
+                    $(".fontshow").html("站点建设中 我们很快就会回来");
+                    $(".fontshow").removeClass("fontactive");
+                } else {
+                    $(".fontshow").html("During construction, We will be back soon");
+                    $(".fontshow").addClass("fontactive");
+                }
+                $(".fontshow").fadeIn(2000);
+            });
+        }, 5000);
+        var wxData = [[${wxjsconfig}]];
+    </script>
+
 </head>
 <body>
 <nav class="navbar navbar-inverse  navbar-static-top">
@@ -52,29 +69,13 @@
 </nav>
 <div class="showcase">
 </div>
-<div class="col-sm-12">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
-        <h2>About Me
-            <small>sometime it`s not me</small>
-        </h2>
-        <p class="lead">除了研究专业的知识外，还喜欢唱、跳、rap</p>
-        <p>不不不，其实是喜欢旅游、逛吃逛喝、拍摄美丽的风景、古街、山河、又有时候也喜欢喧闹的城市。</p>
-        <div class="row" style="margin-bottom: 20px"></div>
-        <h2>技术栈
-            <small>头发应该还够用吧</small>
-        </h2>
-        <p>SSH/SSM、SpringBoot、SpringCloud、Dubbo</p>
-        <p> Html、Js、JQuery、Vue</p>
-        <p> MySQL、Redis</p>
-        <p>Linux、Docker</p>
-        <div class="row" style="margin-bottom: 20px"></div>
-        <p>
-            <img src="https://summer-blog-images.oss-cn-shanghai.aliyuncs.com/wechat.jpg"
-                 alt="微信公众号" class="img-rounded" style="width: 200px;border:1px solid orange;">
-        </p>
+
+<div class="col-sm-3"></div>
+<div class="col-sm-6">
+    <div class="col-sm-12 text-center tiptext">
+        <h1 class="fontshow fontactive">During construction, we will be back soon</h1>
     </div>
-    <div class="col-sm-3"></div>
 </div>
+<div class="col-sm-3"></div>
 </body>
 </html>

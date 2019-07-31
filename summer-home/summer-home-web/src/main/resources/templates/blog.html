@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width"/>
     <title>SUMMER-BLOG</title>
     <link type="text/css" rel="stylesheet" href="/css/editormd.css">
+    <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201902">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.css?v=201901">
 
     <script type="text/javascript" src="/js/md/jquery.js"></script>
@@ -83,9 +84,10 @@
                             "                    <p>" + blogList[i].show_text + "</p>\n" +
                             "                    <p>" + blogList[i].create_time + "</p>\n" +
                             "                    <p>\n" +
-                            "                        <span class=\"label label-default\">Default</span>\n" +
-                            "                        <span class=\"label label-primary\">Default</span>\n" +
-                            "                        <span class=\"label label-default\">Default</span>\n" +
+
+
+                            generatorTags(blogList[i].tags) +
+
                             "                    </p>\n" +
                             "                </div>\n" +
                             "            </div>";
@@ -98,6 +100,15 @@
                     scrollLock = false;
                 }
             });
+        }
+
+
+        function generatorTags(tags) {
+            var tasgHTML = "";
+            for (var i = 0; i < tags.length; i++) {
+                tasgHTML += "<span class='label label-info'>" + tags[i] + "</span>  ";
+            }
+            return tasgHTML;
         }
 
 
@@ -126,7 +137,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/blog">Blog<span class="sr-only"></span></a></li>
-                    <li><a href="#">Life</a></li>
+                    <li><a href="/mylife">MyLife</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
@@ -151,9 +162,11 @@
     <div class="col-sm-6">
         <div class="jumbotron">
             <h1>Hello, guys!</h1>
-            <p>感谢您在百忙之中还能光临本站，阅读我的博客</p>
+            <p>欢迎来到我的站点，您可以先点杯咖啡或者打开音乐，然后再阅读我的博客</p>
             <p>记录一些开发中用到的知识点及学习所得，难免错误，欢迎指正、交流。也欢迎关注微信公众号：我在上海的夏天</p>
-            <p><img src="/image/logo.jpg" alt="微信公众号" class="img-rounded" style="width: 200px"></p>
+            <p><img src="https://summer-blog-images.oss-cn-shanghai.aliyuncs.com/wechat.jpg" alt="微信公众号"
+                    class="img-rounded"
+                    style="width: 200px;border: 1px solid orange;"></p>
         </div>
 
         <div id="show_blog" class="container" style="word-break: break-all;  word-wrap: break-word;">
