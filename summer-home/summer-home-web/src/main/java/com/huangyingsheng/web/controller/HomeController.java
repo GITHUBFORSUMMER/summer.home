@@ -1,5 +1,7 @@
 package com.huangyingsheng.web.controller;
 
+import java.util.Date;
+
 import com.huangyingsheng.web.entity.BlogsDO;
 import com.huangyingsheng.web.model.request.GetBlogMDUrlRequestVO;
 import com.huangyingsheng.web.model.response.BaseResponse;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
+import java.text.SimpleDateFormat;
 
 @Controller
 public class HomeController {
@@ -71,7 +74,7 @@ public class HomeController {
         if (queryString != null && !queryString.isEmpty()) {
             requestURL = requestURL + "?" + httpServletRequest.getQueryString();
         }
-        System.out.println(requestURL);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + ":" + requestURL);
         return tokenService.getWxJsConfig(requestURL, appId);
     }
 }
