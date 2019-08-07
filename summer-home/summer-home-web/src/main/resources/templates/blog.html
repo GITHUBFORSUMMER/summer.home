@@ -87,7 +87,7 @@
                     var blogList = result.data;
                     for (var i = 0; i < blogList.length; i++) {
                         var showHTML =
-                            "            <div data-code='" + blogList[i].code + "' class=\"panel panel-default mybolg\">\n" +
+                            "            <div style='display: none;' data-code='" + blogList[i].code + "' class=\"panel panel-default mybolg\">\n" +
                             "                <div class=\"panel-body\">\n" +
                             "                    <h2>" + blogList[i].title + "</h2>\n" +
                             "                    <p>" + blogList[i].show_text + "</p>\n" +
@@ -103,6 +103,7 @@
 
 
                         $("#show_blog").append(showHTML);
+                        $(".mybolg").fadeIn(1000);
                     }
                     initBlogClik();
                     page();

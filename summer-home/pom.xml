@@ -7,7 +7,7 @@
     <groupId>com.huangyingsheng.web</groupId>
     <artifactId>summer-home</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.2.0</version>
     <modules>
         <module>summer-home-commom</module>
         <module>summer-home-web</module>
@@ -22,7 +22,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <project.version>1.0.0</project.version>
+        <project.version>1.2.0</project.version>
 
         <springboot.version>2.1.2.RELEASE</springboot.version>
         <spring-boot-starter-thymeleaf.version>2.1.2.RELEASE</spring-boot-starter-thymeleaf.version>
