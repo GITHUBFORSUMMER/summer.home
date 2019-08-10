@@ -31,7 +31,7 @@ public class TokenServiceImpl implements TokenService {
         if (url.indexOf("#") > 0) {
             url = url.substring(0, url.indexOf("#"));
         }
-        url.replace("http", "https");
+        url = url.replace("http", "https");
         tokenVo.setUrl(url);
         tokenVo.setSignature(createSignature(tokenVo));
         return tokenVo;
