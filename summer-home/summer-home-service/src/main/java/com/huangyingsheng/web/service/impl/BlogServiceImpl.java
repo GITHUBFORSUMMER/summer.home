@@ -1,12 +1,15 @@
 package com.huangyingsheng.web.service.impl;
 
+import com.huangyingsheng.web.dao.BlogFriendsMapper;
 import com.huangyingsheng.web.dao.BlogsMapper;
+import com.huangyingsheng.web.entity.BlogFriends;
 import com.huangyingsheng.web.entity.BlogsDO;
 import com.huangyingsheng.web.input.GetBlogListInput;
 import com.huangyingsheng.web.model.request.BlogsRequestVO;
 import com.huangyingsheng.web.model.request.GetBlogMDUrlRequestVO;
 import com.huangyingsheng.web.model.response.BaseResponse;
 import com.huangyingsheng.web.model.response.BlogsResponseVO;
+import com.huangyingsheng.web.model.response.GetFrindsResponseVO;
 import com.huangyingsheng.web.service.BlogService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -22,6 +25,9 @@ public class BlogServiceImpl implements BlogService {
 
     @Resource
     private BlogsMapper blogsMapper;
+
+    @Resource
+    private BlogFriendsMapper blogFriendsMapper;
 
 
     @Override
@@ -71,6 +77,25 @@ public class BlogServiceImpl implements BlogService {
         return BaseResponse.ofSuccess(byCode);
     }
 
+    @Override
+    public BaseResponse<List<GetFrindsResponseVO>> getFrinds() {
+        List<BlogFriends> blogFriends = blogFriendsMapper.getBlogFriends();
+        if (blogFriends == null || blogFriends.size() <= 0) {
+            return BaseResponse.ofSuccess(new ArrayList<GetFrindsResponseVO>(0));
+        }
+        List<GetFrindsResponseVO> res = new ArrayList<>(blogFriends.size());
+        for (BlogFriends blogFriend : blogFriends) {
+            GetFrindsResponseVO dto = new GetFrindsResponseVO();
+            dto.setBlogUserName(blogFriend.getBlogUserName());
+            dto.setBlogTitle(blogFriend.getBlogTitle());
+            dto.setBlogDescribe(blogFriend.getBlogDescribe());
+            dto.setBlogUrl(blogFriend.getBlogUrl());
+            dto.setBlogLogoUrl(blogFriend.getBlogLogoUrl());
+            res.add(dto);
+        }
+        return BaseResponse.ofSuccess(res);
+    }
+
 
     private List<BlogsDO> getBlogList(String title, String showText, String tags, Integer pageFrom, Integer pageSize) {
         GetBlogListInput input = new GetBlogListInput();
@@ -81,4 +106,5 @@ public class BlogServiceImpl implements BlogService {
         input.setPageSize(pageSize);
         return blogsMapper.getBlogList(input);
     }
+
 }

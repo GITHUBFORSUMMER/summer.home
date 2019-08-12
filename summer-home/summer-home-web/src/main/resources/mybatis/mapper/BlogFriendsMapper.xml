@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.huangyingsheng.web.dao.BlogFriendsMapper">
+    <resultMap id="BaseResultMap" type="com.huangyingsheng.web.entity.BlogFriends">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+
+        <result column="blog_user_name" property="blogUserName" jdbcType="VARCHAR"/>
+        <result column="blog_title" property="blogTitle" jdbcType="VARCHAR"/>
+        <result column="blog_describe" property="blogDescribe" jdbcType="VARCHAR"/>
+        <result column="blog_url" property="blogUrl" jdbcType="VARCHAR"/>
+        <result column="blog_logo_url" property="blogLogoUrl" jdbcType="VARCHAR"/>
+
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_by" property="modifyBy" jdbcType="VARCHAR"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="display" property="display" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, blog_user_name, blog_title, blog_describe, blog_url, blog_logo_url, create_by, create_time, modify_by, modify_time, remark, display
+    </sql>
+
+
+    <select id="getBlogFriends" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM tb_blog_friends WHERE display=1 ORDER BY create_time DESC;
+    </select>
+
+</mapper>

@@ -1,5 +1,7 @@
 package com.huangyingsheng.web.controller;
 
+import java.util.ArrayList;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
@@ -7,6 +9,7 @@ import java.util.Date;
 import com.huangyingsheng.web.entity.BlogsDO;
 import com.huangyingsheng.web.model.request.GetBlogMDUrlRequestVO;
 import com.huangyingsheng.web.model.response.BaseResponse;
+import com.huangyingsheng.web.model.response.GetFrindsResponseVO;
 import com.huangyingsheng.web.model.response.TokenVo;
 import com.huangyingsheng.web.service.BlogService;
 import com.huangyingsheng.web.service.TokenService;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -72,6 +76,22 @@ public class HomeController {
         model.addAttribute("wxjsconfig", getToken());
         return "mylife";
     }
+
+
+    @RequestMapping(value = "/friends", method = RequestMethod.GET)
+    public String friends(Model model) {
+        try {
+            BaseResponse<List<GetFrindsResponseVO>> result = blogService.getFrinds();
+            List<GetFrindsResponseVO> frinds = result.getData();
+            model.addAttribute("frinds", frinds);
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("frinds", new ArrayList<GetFrindsResponseVO>(0));
+        }
+        model.addAttribute("wxjsconfig", getToken());
+        return "friends";
+    }
+
 
     private TokenVo getToken() {
 

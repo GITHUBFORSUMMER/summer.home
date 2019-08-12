@@ -5,6 +5,7 @@ import com.huangyingsheng.web.model.request.BlogsRequestVO;
 import com.huangyingsheng.web.model.request.GetBlogMDUrlRequestVO;
 import com.huangyingsheng.web.model.response.BaseResponse;
 import com.huangyingsheng.web.model.response.BlogsResponseVO;
+import com.huangyingsheng.web.model.response.GetFrindsResponseVO;
 import com.huangyingsheng.web.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ public class BlogController {
     public BaseResponse<List<BlogsResponseVO>> getBlogs(@RequestBody BlogsRequestVO request) {
         return blogService.getBlogs(request);
     }
+
 
 
 }

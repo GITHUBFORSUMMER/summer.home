@@ -6,12 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="summer-home-model" />
+        <module name="summer-home-web" />
+        <module name="summer-home-service" />
         <module name="summer-home-commom" />
         <module name="summer-home-dao" />
         <module name="summer-home-entity" />
-        <module name="summer-home-model" />
-        <module name="summer-home-service" />
-        <module name="summer-home-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

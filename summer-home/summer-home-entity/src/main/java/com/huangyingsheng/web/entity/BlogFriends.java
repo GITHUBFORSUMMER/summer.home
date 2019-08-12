@@ -2,23 +2,19 @@ package com.huangyingsheng.web.entity;
 
 import java.util.Date;
 
-public class BlogsDO {
+public class BlogFriends {
 
     private Long id;
 
-    private String code;
+    private String blogUserName;
 
-    private String title;
+    private String blogTitle;
 
-    private String showText;
+    private String blogDescribe;
 
-    private String tags;
+    private String blogUrl;
 
-    private Integer readingVolume;
-
-    private Integer likeNo;
-
-    private String contentUrl;
+    private String blogLogoUrl;
 
     private String createBy;
 
@@ -40,60 +36,44 @@ public class BlogsDO {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getBlogUserName() {
+        return blogUserName;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setBlogUserName(String blogUserName) {
+        this.blogUserName = blogUserName;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBlogTitle() {
+        return blogTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBlogTitle(String blogTitle) {
+        this.blogTitle = blogTitle;
     }
 
-    public String getShowText() {
-        return showText;
+    public String getBlogDescribe() {
+        return blogDescribe;
     }
 
-    public void setShowText(String showText) {
-        this.showText = showText;
+    public void setBlogDescribe(String blogDescribe) {
+        this.blogDescribe = blogDescribe;
     }
 
-    public String getTags() {
-        return tags;
+    public String getBlogUrl() {
+        return blogUrl;
     }
 
-    public void setTags(String tags) {
-        this.tags = tags;
+    public void setBlogUrl(String blogUrl) {
+        this.blogUrl = blogUrl;
     }
 
-    public Integer getReadingVolume() {
-        return readingVolume;
+    public String getBlogLogoUrl() {
+        return blogLogoUrl;
     }
 
-    public void setReadingVolume(Integer readingVolume) {
-        this.readingVolume = readingVolume;
-    }
-
-    public Integer getLikeNo() {
-        return likeNo;
-    }
-
-    public void setLikeNo(Integer likeNo) {
-        this.likeNo = likeNo;
-    }
-
-    public String getContentUrl() {
-        return contentUrl;
-    }
-
-    public void setContentUrl(String contentUrl) {
-        this.contentUrl = contentUrl;
+    public void setBlogLogoUrl(String blogLogoUrl) {
+        this.blogLogoUrl = blogLogoUrl;
     }
 
     public String getCreateBy() {
@@ -136,11 +116,11 @@ public class BlogsDO {
         this.remark = remark;
     }
 
-    public int getDisplay() {
+    public Integer getDisplay() {
         return display;
     }
 
-    public void setDisplay(int display) {
+    public void setDisplay(Integer display) {
         this.display = display;
     }
 }
