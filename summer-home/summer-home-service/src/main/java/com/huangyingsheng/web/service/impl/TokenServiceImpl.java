@@ -9,6 +9,8 @@ import com.huangyingsheng.web.service.TokenService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -32,6 +34,7 @@ public class TokenServiceImpl implements TokenService {
             url = url.substring(0, url.indexOf("#"));
         }
         url = url.replace("http", "https");
+        //System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + ":befor_sign-" + url);
         tokenVo.setUrl(url);
         tokenVo.setSignature(createSignature(tokenVo));
         return tokenVo;

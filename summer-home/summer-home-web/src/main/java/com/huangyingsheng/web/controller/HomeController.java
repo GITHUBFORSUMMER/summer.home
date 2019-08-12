@@ -1,5 +1,7 @@
 package com.huangyingsheng.web.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 
 import com.huangyingsheng.web.entity.BlogsDO;
@@ -49,6 +51,9 @@ public class HomeController {
         GetBlogMDUrlRequestVO dto = new GetBlogMDUrlRequestVO();
         dto.setCode(code);
         BaseResponse<BlogsDO> blogMDUrl = blogService.getBlogMDUrl(dto);
+        if (blogMDUrl == null || !blogMDUrl.getSuccess() || blogMDUrl.getData() == null) {
+            return "error/404";
+        }
         model.addAttribute("wxjsconfig", getToken());
         model.addAttribute("blog_code", code);
         model.addAttribute("md_url", blogMDUrl.getData().getContentUrl());
@@ -69,6 +74,15 @@ public class HomeController {
     }
 
     private TokenVo getToken() {
+
+        try {
+            String ipAddr = getIpAddr(httpServletRequest);
+            System.out.println("访问ip地址:" + ipAddr);
+        } catch (Exception ex) {
+            System.out.println("获取用户ip失败:" + ex.getMessage());
+            System.out.println(ex.getStackTrace());
+        }
+
         String requestURL = httpServletRequest.getRequestURL().toString();
         String queryString = httpServletRequest.getQueryString();
         if (queryString != null && !queryString.isEmpty()) {
@@ -76,5 +90,46 @@ public class HomeController {
         }
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + ":" + requestURL);
         return tokenService.getWxJsConfig(requestURL, appId);
+
     }
+
+
+    private String getIpAddr(HttpServletRequest request) {
+        String ipAddress = null;
+        try {
+            ipAddress = request.getHeader("x-forwarded-for");
+            if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+                ipAddress = request.getHeader("Proxy-Client-IP");
+            }
+            if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+                ipAddress = request.getHeader("WL-Proxy-Client-IP");
+            }
+            if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+                ipAddress = request.getRemoteAddr();
+                if (ipAddress.equals("127.0.0.1")) {
+                    // 根据网卡取本机配置的IP
+                    InetAddress inet = null;
+                    try {
+                        inet = InetAddress.getLocalHost();
+                    } catch (UnknownHostException e) {
+                        e.printStackTrace();
+                    }
+                    ipAddress = inet.getHostAddress();
+                }
+            }
+            // 对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
+            if (ipAddress != null && ipAddress.length() > 15) { // "***.***.***.***".length()
+                // = 15
+                if (ipAddress.indexOf(",") > 0) {
+                    ipAddress = ipAddress.substring(0, ipAddress.indexOf(","));
+                }
+            }
+        } catch (Exception e) {
+            ipAddress = "";
+        }
+        // ipAddress = this.getRequest().getRemoteAddr();
+
+        return ipAddress;
+    }
+
 }
