@@ -78,18 +78,18 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = "/friends", method = RequestMethod.GET)
-    public String friends(Model model) {
+    @RequestMapping(value = "/links", method = RequestMethod.GET)
+    public String links(Model model) {
         try {
             BaseResponse<List<GetFrindsResponseVO>> result = blogService.getFrinds();
             List<GetFrindsResponseVO> frinds = result.getData();
-            model.addAttribute("frinds", frinds);
+            model.addAttribute("links", frinds);
         } catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("frinds", new ArrayList<GetFrindsResponseVO>(0));
+            model.addAttribute("links", new ArrayList<GetFrindsResponseVO>(0));
         }
         model.addAttribute("wxjsconfig", getToken());
-        return "friends";
+        return "links";
     }
 
 

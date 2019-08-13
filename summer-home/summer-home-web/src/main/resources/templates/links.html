@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <title>SUMMER-FRIENDS</title>
+    <title>SUMMER-LINKS</title>
     <link rel="icon" type="shortcut icon" href="/summer.ico">
     <link type="text/css" rel="stylesheet" href="/css/editormd.css">
     <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201902">
@@ -11,6 +11,72 @@
 
     <script type="text/javascript" src="/js/md/jquery.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <style>
+
+        .media {
+            margin-top: 15px;
+        }
+
+        first-child {
+            margin-top: 0;
+        }
+
+        .media,
+        .media-body {
+            zoom: 1;
+            overflow: hidden;
+        }
+
+        .media-body {
+            width: 10000px;
+        }
+
+        .media-object {
+            display: block;
+
+        }
+
+        .img-thumbnail {
+            max-width: none;
+        }
+
+        .media-right,
+        .media > .pull-right {
+            padding-left: 10px;
+        }
+
+        .media-left,
+        .media > .pull-left {
+            padding-right: 10px;
+        }
+
+        .media-left,
+        .media-right,
+        .media-body {
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        .media-middle {
+            vertical-align: middle;
+        }
+
+        .media-bottom {
+            vertical-align: bottom;
+        }
+
+        .media-heading {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .media-list {
+            padding-left: 0;
+            list-style: none;
+        }
+
+
+    </style>
 </head>
 <body>
 
@@ -35,7 +101,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/blog">Blog</a></li>
                     <li><a href="/mylife">MyLife<span class="sr-only"></span></a></li>
-                    <li class="active"><a href="/friends">friends</a></li>
+                    <li class="active"><a href="/links">Links</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
@@ -56,15 +122,18 @@
 <div class="showcase">
 </div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6 show_friends" style="display: none">
-
-
+<div class="col-md-12">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 show_links" style="display: none">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>友链
+                    <small>{^-^}</small>
+                </h2>
+            </div>
         </div>
-        <div class="col-sm-3"></div>
     </div>
+    <div class="col-sm-3"></div>
 </div>
 
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
@@ -73,24 +142,24 @@
 
     var wxData = [[${wxjsconfig}]];
 
-    var frinds = [[${frinds}]];
+    var links = [[${links}]];
 
     $(function () {
-        var friendsHTML = "";
-        for (var i = 0; i < frinds.length; i++) {
-            var friend = frinds[i];
-            friendsHTML += '<div class="media">' +
+        var linksHTML = "";
+        for (var i = 0; i < links.length; i++) {
+            var link = links[i];
+            linksHTML += '<div class="media">' +
                 '                <div class="media-left">' +
-                '                    <img class="media-object" src="' + friend.blogLogoUrl + '" alt="blog_logo">' +
+                '                    <img style="width: 64px; height: 64px;" class="media-object" src="' + link.blogLogoUrl + '" alt="blog_logo">' +
                 '                </div>' +
                 '                <div class="media-body">' +
-                '                    <a href="' + friend.blogUrl + '"><h4 class="media-heading">' + friend.blogTitle + '</h4></a>' +
-                '                    ' + friend.blogDescribe + '' +
+                '                    <a href="' + link.blogUrl + '"><h4 class="media-heading">' + link.blogTitle + '</h4></a>' +
+                '                    ' + link.blogDescribe + '' +
                 '                </div>' +
                 '            </div>';
         }
-        $(".show_friends").append(friendsHTML);
-        $(".show_friends").fadeIn(2000);
+        $(".show_links").append(linksHTML);
+        $(".show_links").fadeIn(2000);
     })
 
 </script>

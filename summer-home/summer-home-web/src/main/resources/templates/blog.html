@@ -153,7 +153,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/blog">Blog<span class="sr-only"></span></a></li>
                     <li><a href="/mylife">MyLife</a></li>
-                    <li><a href="/friends">friends</a></li>
+                    <li><a href="/links">Links</a></li>
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
@@ -209,7 +209,7 @@
 
             // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
             wx.onMenuShareTimeline({
-                title: 'HELLO SUMMER', // 分享标题
+                title: 'MyStyle MyBlog,这里是 SUMMER 的博客', // 分享标题
                 link: 'https://www.huangyingsheng.com/blog/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                 imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
                 success: function () {
