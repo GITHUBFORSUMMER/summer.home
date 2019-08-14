@@ -114,7 +114,7 @@ public class HomeController {
         if (queryString != null && !queryString.isEmpty()) {
             requestURL = requestURL + "?" + httpServletRequest.getQueryString();
         }
-        logger.info("延签的URL地址:" + requestURL);
+        logger.info("验签的URL地址:" + requestURL);
         return tokenService.getWxJsConfig(requestURL, appId);
 
     }
