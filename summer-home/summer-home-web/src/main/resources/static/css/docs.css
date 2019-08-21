@@ -114,6 +114,11 @@ html, body {
         background-repeat: no-repeat !important;
     }
 
+    .viewbody {
+        height: auto !important;
+        margin: 0 !important;
+    }
+
     .tiptext {
         margin-top: 60% !important;
     }
@@ -219,4 +224,9 @@ html, body {
     /* background-position: center; */
     /* background-position-x: center; */
     background-size: cover;
+}
+
+
+.viewbody {
+
 }

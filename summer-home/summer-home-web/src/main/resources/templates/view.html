@@ -7,7 +7,7 @@
     <link rel="icon" type="shortcut icon" href="/summer.ico">
 
     <link type="text/css" rel="stylesheet" href="/css/editormd.css">
-    <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201902">
+    <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201908">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.css?v=201901">
 
     <script type="text/javascript" src="/js/jquery.js"></script>
@@ -57,63 +57,87 @@
     </script>
 </head>
 <body>
+<div class="viewbody" style="z-index: 3;
+    margin-bottom: 460px;
+    position: relative;
+    background-color: white;
+    background-size: cover;">
+    <nav class="navbar navbar-inverse  navbar-static-top">
+        <div class="container-fluid">
+            <div class="col-sm-3"></div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="col-sm-6">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">SUMMER</a>
+                </div>
 
-<nav class="navbar navbar-inverse  navbar-static-top">
-    <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/blog">Blog<span class="sr-only"></span></a></li>
+                        <li><a href="/mylife">MyLife</a></li>
+                        <li><a href="/links">Links</a></li>
+                    </ul>
+                    <!--<form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </form>-->
+
+                    <!--最右边-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </nav>
+
+    <div class="showcase">
+    </div>
+
+    <div class="col-md-12">
         <div class="col-sm-3"></div>
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="col-sm-6">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">SUMMER</a>
+        <div class="col-sm-6 blogview" style="display: none">
+
+            <div id="wordsView">
+                <textarea id="md_text" name="editormd-markdown-doc"></textarea>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="/blog">Blog<span class="sr-only"></span></a></li>
-                    <li><a href="/mylife">MyLife</a></li>
-                    <li><a href="/links">Links</a></li>
-                </ul>
-                <!--<form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">搜索</button>
-                </form>-->
-
-                <!--最右边-->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/about">About</a></li>
-                </ul>
-            </div>
         </div>
         <div class="col-sm-3"></div>
     </div>
-</nav>
-
-<div class="showcase">
 </div>
 
-<div class="col-md-12">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6 blogview" style="display: none">
-
-        <div id="wordsView">
-            <textarea id="md_text" name="editormd-markdown-doc"></textarea>
+<div class="m-static-foot">
+    <div class="container text-center">
+        <div class="col-sm-12">
+            <div class="text-center my-nick" style="margin:50px 0">
+                <h1 style="font-family:'Bauhaus 93';">SUMMER</h1>
+            </div>
         </div>
 
+        <div class="col-sm-12" style="height: 50px;border-top: solid 0.5px snow">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                Copyright © 黄颖晟 2019
+                <br>
+                闽ICP备17000331号|闽公网安备
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
     </div>
-    <div class="col-sm-3"></div>
 </div>
-
-
+<div class="foot-auxiliary"></div>
 <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 <script>
     wx.config({
