@@ -6,7 +6,7 @@
     <title>SUMMER-BLOG</title>
     <link rel="icon" type="shortcut icon" href="/summer.ico">
     <link type="text/css" rel="stylesheet" href="/css/editormd.css">
-    <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201902">
+    <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201908">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.css?v=201901">
 
     <script type="text/javascript" src="/js/md/jquery.js"></script>
@@ -35,7 +35,7 @@
                     return;
                 }
 
-                if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+                if (($(window).scrollTop() + $(window).height()) <= ($(document).height() - 400)) {
                     scrollLock = true;
                     currentPage = currentPage + 1;
                     getBlogs(currentPage, pageSize);
@@ -126,136 +126,170 @@
 
     <style>
         body {
-            background: url(https://summer-blog-images.oss-cn-shanghai.aliyuncs.com/poster.jpg);
-            background-size: cover;
+
         }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse  navbar-static-top">
-    <div class="container-fluid">
-        <div class="col-sm-3"></div>
-        <!-- Brand and toggle get grouped for better mobile display -->
+
+
+<div class="viewbody" style="z-index: 3;
+    margin-bottom: 460px;
+    position: relative;
+    background: url(https://summer-blog-images.oss-cn-shanghai.aliyuncs.com/poster.jpg);
+    background-size: cover;">
+
+
+    <nav class="navbar navbar-inverse  navbar-static-top">
+        <div class="container-fluid">
+            <div class="col-sm-3"></div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="col-sm-6">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">SUMMER</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/blog">Blog<span class="sr-only"></span></a></li>
+                        <li><a href="/mylife">MyLife</a></li>
+                        <li><a href="/links">Links</a></li>
+                    </ul>
+                    <!-- <form class="navbar-form navbar-left">
+                         <div class="form-group">
+                             <input type="text" class="form-control" placeholder="Search">
+                         </div>
+                         <button type="submit" class="btn btn-default">搜索</button>
+                     </form>-->
+
+                    <!--最右边-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </nav>
+    <div class="col-md-12" style="margin-top: -20px;background-color: white;">
+        <div class="col-sm-3">
+
+        </div>
         <div class="col-sm-6">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">SUMMER</a>
+            <div class="jumbotron">
+                <h1>Hello, guys!</h1>
+                <p>欢迎来到我的站点，您可以先点杯咖啡或者打开音乐，然后再阅读我的博客</p>
+                <p>记录一些开发中用到的知识点及学习所得，难免错误，欢迎指正、交流</p>
+                <p>也欢迎关注微信公众号：我在上海的夏天</p>
+                <p><img src="https://summer-blog-images.oss-cn-shanghai.aliyuncs.com/wechat.jpg" alt="微信公众号"
+                        class="img-rounded"
+                        style="width: 200px;border: 1px solid orange;"></p>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/blog">Blog<span class="sr-only"></span></a></li>
-                    <li><a href="/mylife">MyLife</a></li>
-                    <li><a href="/links">Links</a></li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">搜索</button>
-                </form>
 
-                <!--最右边-->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/about">About</a></li>
-                </ul>
-            </div>
         </div>
-        <div class="col-sm-3"></div>
-    </div>
-</nav>
-<div class="col-md-12" style="margin-top: -20px;background-color: white;">
-    <div class="col-sm-3">
+        <div class="col-sm-3">
 
-    </div>
-    <div class="col-sm-6">
-        <div class="jumbotron">
-            <h1>Hello, guys!</h1>
-            <p>欢迎来到我的站点，您可以先点杯咖啡或者打开音乐，然后再阅读我的博客</p>
-            <p>记录一些开发中用到的知识点及学习所得，难免错误，欢迎指正、交流</p>
-            <p>也欢迎关注微信公众号：我在上海的夏天</p>
-            <p><img src="https://summer-blog-images.oss-cn-shanghai.aliyuncs.com/wechat.jpg" alt="微信公众号"
-                    class="img-rounded"
-                    style="width: 200px;border: 1px solid orange;"></p>
         </div>
 
 
-    </div>
-    <div class="col-sm-3">
-
-    </div>
-
-
-    <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
-    <script>
-        wx.config({
-            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-            appId: 'wx80a7631fb6f3e4d2', // 必填，公众号的唯一标识
-            timestamp: wxData.timestamp, // 必填，生成签名的时间戳
-            nonceStr: wxData.nonceStr, // 必填，生成签名的随机串
-            signature: wxData.signature,// 必填，签名，见附录1
-            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-        });
-
-
-        wx.ready(function () {
-
-            // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-            wx.onMenuShareTimeline({
-                title: 'MyStyle MyBlog,这里是 SUMMER 的博客', // 分享标题
-                link: 'https://www.huangyingsheng.com/blog/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    alert('很棒，你分享操作的姿势总是那么的优雅!');
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
+        <script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+        <script>
+            wx.config({
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: 'wx80a7631fb6f3e4d2', // 必填，公众号的唯一标识
+                timestamp: wxData.timestamp, // 必填，生成签名的时间戳
+                nonceStr: wxData.nonceStr, // 必填，生成签名的随机串
+                signature: wxData.signature,// 必填，签名，见附录1
+                jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
             });
 
 
-            wx.onMenuShareAppMessage({
-                title: 'HELLO SUMMER', // 分享标题
-                desc: 'MyStyle MyBlog,这里是 SUMMER 的博客', // 分享描述
-                link: 'https://www.huangyingsheng.com/blog/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
-                type: 'link', // 分享类型,music、video或link，不填默认为link
-                //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                    alert('很棒，你分享操作的姿势总是那么的优雅!');
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
+            wx.ready(function () {
+
+                // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+                wx.onMenuShareTimeline({
+                    title: 'MyStyle MyBlog,这里是 SUMMER 的博客', // 分享标题
+                    link: 'https://www.huangyingsheng.com/blog/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        alert('很棒，你分享操作的姿势总是那么的优雅!');
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
+
+
+                wx.onMenuShareAppMessage({
+                    title: 'HELLO SUMMER', // 分享标题
+                    desc: 'MyStyle MyBlog,这里是 SUMMER 的博客', // 分享描述
+                    link: 'https://www.huangyingsheng.com/blog/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP44pOCIzriaUsBuTIibB4fylJVmLUOU7TPm4f5QTlwCxpRVrv80BmlR00NiaQtlsKtpRw43Sop02icKGA/0?wx_fmt=jpeg', // 分享图标
+                    type: 'link', // 分享类型,music、video或link，不填默认为link
+                    //dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                    success: function () {
+                        // 用户确认分享后执行的回调函数
+                        alert('很棒，你分享操作的姿势总是那么的优雅!');
+                    },
+                    cancel: function () {
+                        // 用户取消分享后执行的回调函数
+                    }
+                });
             });
-        });
 
-        wx.error(function (res) {
-            // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-            //alert('今天不能微信分享了哦' + '[' + res.errMsg + ']');
-            //alert(res);
-        });
-    </script>
-</div>
-<div class="row" style="background-color: white"></div>
-<div class="col-sm-12" style="margin-top: 20px;">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
-        <div id="show_blog" class="container" style="word-break: break-all;  word-wrap: break-word;">
+            wx.error(function (res) {
+                // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+                //alert('今天不能微信分享了哦' + '[' + res.errMsg + ']');
+                //alert(res);
+            });
+        </script>
+    </div>
+    <div class="row" style="background-color: white"></div>
 
+    <div class="col-sm-12" style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div id="show_blog" class="container" style="word-break: break-all;  word-wrap: break-word;">
+
+
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
 
         </div>
     </div>
-    <div class="col-sm-3"></div>
 </div>
+<div class="m-static-foot">
+    <div class="container text-center">
+        <div class="col-sm-12">
+            <div class="text-center my-nick" style="margin:50px 0">
+                <h1 style="font-family:'Bauhaus 93';">SUMMER</h1>
+            </div>
+        </div>
+
+        <div class="col-sm-12" style="height: 50px;border-top: solid 0.5px snow">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                Copyright © 黄颖晟 2019
+                <br>
+                闽ICP备17000331号|闽公网安备
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+    </div>
+</div>
+<div class="foot-auxiliary"></div>
 </body>
 </html>

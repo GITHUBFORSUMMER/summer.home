@@ -13,6 +13,8 @@ import com.huangyingsheng.web.model.response.GetFrindsResponseVO;
 import com.huangyingsheng.web.model.response.TokenVo;
 import com.huangyingsheng.web.service.BlogService;
 import com.huangyingsheng.web.service.TokenService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,10 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+
+
+    private static Logger logger = LoggerFactory.getLogger(HomeController.class);
+
 
     @Autowired
     private TokenService tokenService;
@@ -85,7 +91,7 @@ public class HomeController {
             List<GetFrindsResponseVO> frinds = result.getData();
             model.addAttribute("links", frinds);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("/links", e);
             model.addAttribute("links", new ArrayList<GetFrindsResponseVO>(0));
         }
         model.addAttribute("wxjsconfig", getToken());
@@ -97,10 +103,10 @@ public class HomeController {
 
         try {
             String ipAddr = getIpAddr(httpServletRequest);
-            System.out.println("访问ip地址:" + ipAddr);
+            logger.info("访问ip地址:" + ipAddr);
         } catch (Exception ex) {
-            System.out.println("获取用户ip失败:" + ex.getMessage());
-            System.out.println(ex.getStackTrace());
+            logger.info("获取用户ip失败:" + ex.getMessage());
+            logger.error("获取用户ip失败", ex);
         }
 
         String requestURL = httpServletRequest.getRequestURL().toString();
@@ -108,7 +114,7 @@ public class HomeController {
         if (queryString != null && !queryString.isEmpty()) {
             requestURL = requestURL + "?" + httpServletRequest.getQueryString();
         }
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + ":" + requestURL);
+        logger.info("验签的URL地址:" + requestURL);
         return tokenService.getWxJsConfig(requestURL, appId);
 
     }
@@ -132,7 +138,7 @@ public class HomeController {
                     try {
                         inet = InetAddress.getLocalHost();
                     } catch (UnknownHostException e) {
-                        e.printStackTrace();
+                        logger.error("/getIpAddr", e);
                     }
                     ipAddress = inet.getHostAddress();
                 }
