@@ -68,6 +68,7 @@ public class HomeController {
         model.addAttribute("blog_code", code);
         model.addAttribute("md_url", blogMDUrl.getData().getContentUrl());
         model.addAttribute("blog_title", blogMDUrl.getData().getTitle());
+        model.addAttribute("blog_tag",blogMDUrl.getData().getTags());
         return "view";
     }
 
