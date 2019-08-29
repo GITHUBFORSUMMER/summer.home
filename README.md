@@ -1,6 +1,6 @@
 # summer.home
 
-[MyBlog](https://www.huangyingsheng.com)
+[MyBlog-SUMMER](https://www.huangyingsheng.com)
 
 Welcome to my blog. You can order a cup of coffee or turn on the music first, and then read my blog.
 
