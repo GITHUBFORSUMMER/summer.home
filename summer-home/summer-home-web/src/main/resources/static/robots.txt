@@ -1,4 +1,5 @@
 User-agent: Googlebot
-User-agent: Baiduspider
+User-agent: *
 Disallow: /debug_tools
 Sitemap: https://www.huangyingsheng.com/sitemap.xml
+Sitemap: https://www.huangyingsheng.com/sitemap.html

@@ -68,7 +68,7 @@ public class HomeController {
         model.addAttribute("blog_code", code);
         model.addAttribute("md_url", blogMDUrl.getData().getContentUrl());
         model.addAttribute("blog_title", blogMDUrl.getData().getTitle());
-        model.addAttribute("blog_tag",blogMDUrl.getData().getTags());
+        model.addAttribute("blog_tag", blogMDUrl.getData().getTags());
         return "view";
     }
 
@@ -97,6 +97,12 @@ public class HomeController {
         }
         model.addAttribute("wxjsconfig", getToken());
         return "links";
+    }
+
+    @RequestMapping(value = "/sitemap.html", method = RequestMethod.GET)
+    public String sitemap(Model model) {
+        model.addAttribute("wxjsconfig", getToken());
+        return "sitemap";
     }
 
 
