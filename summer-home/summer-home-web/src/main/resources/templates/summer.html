@@ -9,20 +9,22 @@
 
     <meta name="locale" content="zh_CN"/>
     <meta http-equiv="content-language" content="zh-cn"/>
-    <meta name="description" content="黄颖晟,黄,颖晟,SUMMER,summer,博客,blog,BLOG,Blog,个人博客,个人,电商,研发,IT,it,技术">
-    <meta name="keywords" content="黄颖晟,黄,颖晟,SUMMER,summer">
+    <meta name="description" content="Hello,这里是黄颖晟(SUMMER)的个人站点,也是我的口袋时光，生活小站!">
+    <meta name="keywords"
+          content="黄颖晟,黄,颖晟,SUMMER,summer,博客,blog,BLOG,Blog,个人博客,个人,电子商务,电商,研发,IT,it,技术,B2C,b2c,O2O,o2o,toC,toB">
     <meta name="robots" content="noarchive"/>
 
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP5RsatpLZVZFTlCtQ2LZXeCrW3ZqfloBt8FMD1N7JT0uhDf2PJ0Jgp3YFo1go6gtvQbqGkfYjiciaWg/0?wx_fmt=jpeg">
+    <meta name="twitter:image"
+          content="https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP5RsatpLZVZFTlCtQ2LZXeCrW3ZqfloBt8FMD1N7JT0uhDf2PJ0Jgp3YFo1go6gtvQbqGkfYjiciaWg/0?wx_fmt=jpeg">
     <meta name="twitter:title" content="黄颖晟的博客">
-    <meta name="twitter:description" content="黄颖晟,黄,颖晟,SUMMER,summer,博客,blog,BLOG,Blog,个人博客,个人,电商,研发,IT,it,技术">
+    <meta name="twitter:description" content="Hello,这里是黄颖晟(SUMMER)的个人站点,也是我的口袋时光，生活小站!">
     <meta name="twitter:creator" content="@https://twitter.com/">
 
     <meta property="og:site_name" content="黄颖晟的博客">
-    <meta property="og:title" content="黄颖晟,黄,颖晟,SUMMER,summer">
-    <meta name="og:description" content="黄颖晟,黄,颖晟,SUMMER,summer,博客,blog,BLOG,Blog,个人博客,个人,电商,研发,IT,it,技术"/>
+    <meta property="og:title" content="黄颖晟的博客">
+    <meta name="og:description" content="Hello,这里是黄颖晟(SUMMER)的个人站点,也是我的口袋时光，生活小站!"/>
     <meta property="og:url" content=" https://www.huangyingsheng.com/">
     <meta property="og:image"
           content="https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP5RsatpLZVZFTlCtQ2LZXeCrW3ZqfloBt8FMD1N7JT0uhDf2PJ0Jgp3YFo1go6gtvQbqGkfYjiciaWg/0?wx_fmt=jpeg">
@@ -40,7 +42,11 @@
     <meta property="article:tag" content="it"/>
     <meta property="article:tag" content="博客"/>
     <meta property="article:tag" content="blog"/>
-
+    <meta property="article:tag" content="B2C"/>
+    <meta property="article:tag" content="O2O"/>
+    <meta property="article:tag" content="B2B"/>
+    <meta property="article:tag" content="toC"/>
+    <meta property="article:tag" content="toB"/>
 
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -260,6 +266,37 @@
                 },
                 cancel: function () {
                     // 用户取消分享后执行的回调函数
+                }
+            });
+
+            wx.onMenuShareQQ({
+                title: 'HELLO SUMMER', // 分享标题
+                desc: '药！！DJ Drop the beat!', // 分享描述
+                link: 'https://www.huangyingsheng.com/', // 分享链接
+                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP5RsatpLZVZFTlCtQ2LZXeCrW3ZqfloBt8FMD1N7JT0uhDf2PJ0Jgp3YFo1go6gtvQbqGkfYjiciaWg/0?wx_fmt=jpeg', // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    alert('很棒，你分享操作的姿势总是那么的优雅!');
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                    alert('分享一个又不影响成绩');
+                }
+            });
+
+
+            wx.onMenuShareQZone({
+                title: 'HELLO SUMMER', // 分享标题
+                desc: '药！！DJ Drop the beat!', // 分享描述
+                link: 'https://www.huangyingsheng.com/', // 分享链接
+                imgUrl: 'https://mmbiz.qpic.cn/mmbiz_jpg/ibl8dHbdaIP5RsatpLZVZFTlCtQ2LZXeCrW3ZqfloBt8FMD1N7JT0uhDf2PJ0Jgp3YFo1go6gtvQbqGkfYjiciaWg/0?wx_fmt=jpeg', // 分享图标
+                success: function () {
+                    // 用户确认分享后执行的回调函数
+                    alert('很棒，你分享操作的姿势总是那么的优雅!');
+                },
+                cancel: function () {
+                    // 用户取消分享后执行的回调函数
+                    alert('分享一个又不影响成绩');
                 }
             });
         });

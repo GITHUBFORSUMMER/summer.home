@@ -1,4 +1,4 @@
-User-agent: Googlebot
+User-agent: *
 User-agent: *
 Disallow: /debug_tools
 Sitemap: https://www.huangyingsheng.com/sitemap.xml
