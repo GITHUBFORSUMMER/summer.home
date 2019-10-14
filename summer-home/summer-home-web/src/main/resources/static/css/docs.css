@@ -110,7 +110,6 @@ html, body {
         background-color: white;
         margin-bottom: 0px !important;
         position: relative;
-        background-position-x: -500px !important;
         background-repeat: no-repeat !important;
     }
 
@@ -132,6 +131,10 @@ html, body {
         height: 500px;
         width: 100%;
         position: relative;
+    }
+
+    .showdate {
+        text-align: left !important;
     }
 }
 

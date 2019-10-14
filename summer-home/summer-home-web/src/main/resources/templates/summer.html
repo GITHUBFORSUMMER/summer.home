@@ -11,7 +11,7 @@
     <meta http-equiv="content-language" content="zh-cn"/>
     <meta name="description" content="Hello,这里是黄颖晟(SUMMER)的个人站点,也是我的口袋时光，生活小站!">
     <meta name="keywords"
-          content="黄颖晟,黄,颖晟,SUMMER,summer,博客,blog,BLOG,Blog,个人博客,个人,电子商务,电商,研发,IT,it,技术,B2C,b2c,O2O,o2o,toC,toB">
+          content="黄颖晟,颖晟,SUMMER,summer,博客,blog,BLOG,Blog,个人博客,个人,电子商务,电商,研发,IT,it,技术,B2C,b2c,O2O,o2o,toC,toB">
     <meta name="robots" content="noarchive"/>
 
 
@@ -55,8 +55,10 @@
 
     <link rel="icon" type="shortcut icon" href="/summer.ico">
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.css?v=201901">
-    <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201908">
+    <link type="text/css" rel="stylesheet" href="/css/docs.css?v=201910">
     <link type="text/css" rel="stylesheet" href="/css/font-awesome.min.css?v=201902">
+
+
     <style>
         a {
             color: white;
@@ -91,6 +93,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-sm-12 text-center tiptext">
             <div class="col-sm-4">
             </div>
@@ -175,14 +178,15 @@
         </div>
 
 
-        <div class="col-sm-12" style="height: 50px;border-top: solid 0.5px snow">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                Copyright © 黄颖晟 2019
-                <br>
-                闽ICP备17000331号|闽公网安备
+        <div class="col-sm-12" style="height: 50px;border-top: solid 0.5px snow;padding-left: 0px;padding-right: 0px;">
+            <div class="col-md-6 text-left" style="padding-left: 0px">
+                <div class="col-md-12 text-left" style="padding-left: 0px">Copyright © 黄颖晟 2019</div>
+                <div class="col-md-12 text-left" style="padding-left: 0px">闽ICP备17000331号|闽公网安备</div>
             </div>
-            <div class="col-sm-4"></div>
+            <div class="col-md-6 text-right showdate" style="padding-left: 0px;padding-right: 0px;display: none">
+                <span id="site_work_days" th:text="${site_work_days}"></span>&nbsp;&nbsp;&nbsp;
+                <span id="show_now_time"></span>
+            </div>
         </div>
 
     </div>
@@ -196,6 +200,30 @@
     <script th:inline="javascript">
 
         var wxData = [[${wxjsconfig}]];
+
+        $(function () {
+            showNowTime();
+        })
+
+        function showNowTime() {
+
+            updateTime();
+            $(".showdate").fadeIn(1000);
+            setInterval(updateTime, 1000);
+        }
+
+        function updateTime() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1) < 10 ? ("0" + date.getMonth() + 1) : (date.getMonth() + 1);
+            var day = date.getDate();
+            var week = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六")[date.getDay()];
+            var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+            var minute = date.getMinutes() < 10 ? ("0" + date.getMinutes()) : date.getMinutes();
+            var second = date.getSeconds() < 10 ? ("0" + date.getSeconds()) : date.getSeconds();
+            var currentTime = year + "年" + month + "月" + day + "日 " + week + " " + hour + ":" + minute + ":" + second;
+            $("#show_now_time").html(currentTime);
+        }
 
     </script>
 

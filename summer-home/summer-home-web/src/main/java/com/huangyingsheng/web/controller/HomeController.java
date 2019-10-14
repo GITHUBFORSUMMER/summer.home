@@ -1,11 +1,14 @@
 package com.huangyingsheng.web.controller;
 
+import java.io.*;
 import java.util.ArrayList;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Calendar;
 import java.util.Date;
 
+import com.huangyingsheng.web.commom.util.DateUtils;
 import com.huangyingsheng.web.entity.BlogsDO;
 import com.huangyingsheng.web.model.request.GetBlogMDUrlRequestVO;
 import com.huangyingsheng.web.model.response.BaseResponse;
@@ -16,8 +19,10 @@ import com.huangyingsheng.web.service.TokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +51,15 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String summer(Model model) {
         model.addAttribute("wxjsconfig", getToken());
+        int siteWorkDays = 0;
+        try {
+            String dateToString = DateUtils.dateToString(new Date(), DateUtils.DATE_FORMAT);
+            siteWorkDays = DateUtils.daysBetween("2017-09-29", dateToString, DateUtils.DATE_FORMAT);
+        } catch (Exception e) {
+            siteWorkDays = 100;
+        }
+        String siteWorkDaysText = String.format("网站已运行%d天", siteWorkDays);
+        model.addAttribute("site_work_days", siteWorkDaysText);
         return "summer";
     }
 
@@ -103,6 +117,26 @@ public class HomeController {
     public String sitemap(Model model) {
         model.addAttribute("wxjsconfig", getToken());
         return "sitemap";
+    }
+
+
+    @RequestMapping(value = "/robots.txt")
+    @ResponseBody
+    public String robots(Model model) throws Exception {
+        String s = "";
+        ClassPathResource pathResource = new ClassPathResource("static/robots.txt");
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(pathResource.getInputStream(), "UTF-8");
+            BufferedReader br = new BufferedReader(inputStreamReader);
+            StringBuffer content = new StringBuffer();
+            while ((s = br.readLine()) != null) {
+                content = content.append(s + "\n");
+            }
+            return content.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
 
@@ -164,5 +198,6 @@ public class HomeController {
 
         return ipAddress;
     }
+
 
 }
