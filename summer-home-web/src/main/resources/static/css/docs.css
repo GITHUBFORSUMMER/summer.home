@@ -1,0 +1,244 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+
+.foot-group {
+    float: left;
+    width: 50%;
+    height: 50px;
+}
+
+.m-cw-icon {
+    display: inline-block;
+    height: 45px;
+    width: 45px;
+    background-color: rgb(128, 128, 128);
+    text-align: center;
+    line-height: 50px;
+    font-size: 22px;
+    border-radius: 50%;
+    /*margin: 0 25px;*/
+    color: snow;
+}
+
+.my-nick h1 {
+    font-size: 200px;
+}
+
+
+.m-face {
+    display: none;
+    animation: float ease-in-out 3s infinite;
+}
+
+.m-content p, .m-face p, .m-vb-face p {
+    font-family: 'Microsoft YaHei UI';
+    font-size: 20px;
+}
+
+.m-vb-face p {
+    padding: 0;
+    margin-top: 30px;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0em);
+    }
+
+    50% {
+        transform: translateY(2em);
+    }
+
+    100% {
+        transform: translateY(0em);
+    }
+}
+
+.m-vb-face {
+    left: -220%;
+}
+
+.m-content {
+    display: none;
+    margin-top: 30px;
+}
+
+.m-cw, .m-face {
+    margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+    .my-nick h1 {
+        font-size: 50px;
+    }
+
+    .m-cw {
+        text-align: left;
+    }
+
+    .m-image {
+        width: 130px !important;
+        height: 130px !important;
+        padding: 10px !important;
+    }
+
+    .m-vb-face p {
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .m-static-foot {
+        height: 500px;
+        width: 100%;
+        background-color: #111;
+        /*position: relative !important;*/
+        bottom: 0;
+        color: #fffafa;
+    }
+
+    .m-static-body {
+        height: auto;
+        min-height: 100%;
+        width: 100%;
+        background-color: white;
+        margin-bottom: 0px !important;
+        position: relative;
+        background-repeat: no-repeat !important;
+    }
+
+    .viewbody {
+        height: auto !important;
+        margin: 0 !important;
+    }
+
+    .tiptext {
+        margin-top: 60% !important;
+    }
+
+    .mapbody {
+        margin-top: 30%;
+    }
+
+    .foot-auxiliary {
+        display: block !important;;
+        height: 500px;
+        width: 100%;
+        position: relative;
+    }
+
+    .showdate {
+        text-align: left !important;
+    }
+}
+
+.tiptext {
+    margin-top: 20%;
+}
+
+.m-image {
+    width: 300px;
+    height: 300px;
+    padding: 50px;
+}
+
+.m-image:hover {
+    width: 300px;
+    height: 300px;
+    padding: 0;
+}
+
+
+.m-static-top {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(30, 30, 30);
+    position: relative;
+    z-index: 3;
+}
+
+.m-static-top h1 {
+    font-family: Arial;
+    font-size: 150px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    height: 190px;
+    margin-top: -95px;
+    display: block;
+    width: 190px;
+    left: 50%;
+    margin-left: -95px;
+    color: white;
+}
+
+
+.m-static-body {
+    background: url('https://summer-blog-images.oss-cn-shanghai.aliyuncs.com/mypic.jpg?v=201908');
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    margin-bottom: 500px;
+    position: relative;
+    z-index: 3;
+    background-size: cover;
+}
+
+.m-static-foot {
+    height: 500px;
+    width: 100%;
+    background-color: #111;
+    position: fixed;
+    bottom: 0;
+    color: snow;
+    z-index: 2;
+}
+
+.foot-auxiliary {
+    display: none;
+}
+
+.fontshow {
+    color: #888888;
+}
+
+.mapbody {
+    margin-top: 10%;
+}
+
+.mapbody > .mapimg {
+    margin-left: 39%;
+}
+
+
+.showcase {
+    height: 200px;
+    width: 100%;
+    /* background-size: cover; */
+    background: url('https://summer-blog-images.oss-cn-shanghai.aliyuncs.com/poster.jpg');
+    margin-top: -20px;
+    background-position-y: center;
+    /* background-position: center; */
+    /* background-position-x: center; */
+    background-size: cover;
+}
+
+
+.viewbody {
+
+}
+
+.viewbody-static {
+    z-index: 3;
+    margin-bottom: 500px;
+    position: relative;
+    background-color: white;
+    background-size: cover;
+    height: 100%;
+}
