@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TokenService {
 
-    TokenVo getWxJsConfig(String url,String appId);
+    TokenVo getWxJsConfig(String url, String appId);
 
 }
