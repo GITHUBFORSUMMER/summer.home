@@ -19,7 +19,7 @@ public class WeChatController {
 
     private String appId = "wx80a7631fb6f3e4d2";
 
-    @CrossOrigin(origins = "http://localhost:4000")
+    @CrossOrigin(origins = "http://wechat.haungyingsheng.com")
     @RequestMapping("get_share_token")
     public BaseResponse<WxJsConfigVO> getShareToken(@RequestBody @RequestParam("url") String url) {
         try {
